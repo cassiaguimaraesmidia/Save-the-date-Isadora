@@ -6,7 +6,7 @@ body{display:flex;justify-content:center;overflow:hidden;font-family:Georgia,"Ti
 .tela.ativa{opacity:1;visibility:visible;pointer-events:auto}
 .tela-logo{z-index:50;background:#fff;display:flex;align-items:center;justify-content:center}
 .logo{width:88%;max-width:520px;max-height:78dvh;object-fit:contain;animation:entrada .9s ease both}
-.tela-inicial,.tela-video{background:#def3fa}
+.tela-inicial,.tela-video{background:#def3fa url("imagens/abertura-poster.jpg") center center/cover no-repeat}
 .video-preview,.video-abertura{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .solzinho{position:absolute;left:3%;top:3%;width:20%;max-width:120px;z-index:5;filter:drop-shadow(0 5px 10px rgba(255,170,40,.18));transform-origin:center;animation:solVivo 2.6s ease-in-out infinite}
 .paleta-hotspot{position:absolute;left:29%;top:27%;width:42%;height:26%;border:0;background:transparent;cursor:pointer;z-index:10;-webkit-tap-highlight-color:transparent}
@@ -14,8 +14,8 @@ body{display:flex;justify-content:center;overflow:hidden;font-family:Georgia,"Ti
 .dica{position:absolute;left:50%;top:108%;transform:translateX(-50%);white-space:nowrap;padding:9px 15px;border-radius:24px;background:rgba(255,255,255,.82);color:#744f37;font:700 13px Georgia,serif;box-shadow:0 6px 18px rgba(70,55,45,.14);animation:flutuar 2.2s ease-in-out infinite}
 .pular-video{position:absolute;right:14px;bottom:15px;border:1px solid rgba(255,255,255,.7);border-radius:24px;padding:9px 14px;background:rgba(72,54,38,.25);color:#fff;font:600 12px Georgia,serif;backdrop-filter:blur(6px);cursor:pointer;z-index:20}
 
-.tela-data{z-index:20;background:#dff3fa;overflow:hidden}
-.video-data{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
+.tela-data{z-index:20;background:#dff3fa url("imagens/fundo-data-poster.jpg") center center/cover no-repeat;overflow:hidden}
+.video-data{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block;background:#dff3fa url("imagens/fundo-data-poster.jpg") center center/cover no-repeat}
 .tela-data::before{display:none}
 .nuvens{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
 .nuvem{position:absolute;opacity:.42;filter:drop-shadow(0 5px 8px rgba(126,153,178,.08));will-change:transform}
@@ -190,3 +190,12 @@ body{display:flex;justify-content:center;overflow:hidden;font-family:Georgia,"Ti
   .botao{min-height:73px}
   .texto-botao{font-size:15px}
 }
+
+
+/* Compatibilidade Safari/iPhone: fallback de altura e fundo sempre disponível. */
+html,body{min-height:100%;}
+.convite{height:100vh;height:100dvh;min-height:-webkit-fill-available;}
+@supports (-webkit-touch-callout:none){
+  .convite{height:100vh;min-height:-webkit-fill-available;}
+}
+.video-preview,.video-abertura,.video-data{-webkit-transform:translateZ(0);transform:translateZ(0);}
